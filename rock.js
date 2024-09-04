@@ -1,37 +1,3 @@
-function pseudoRNG(seed) {
-    // Ensure the seed is valid (1, 2, or 3)
-    if (![1, 2, 3].includes(seed)) {
-        throw new Error("Invalid seed. Seed must be 1, 2, or 3.");
-    }
-
-    // Generate a random number between 0 and 1
-    const rand = Math.random();
-
-    // 35% chance to match the seed
-    if (rand < 0.35) {
-        return seed;
-    }
-
-    // 40% chance to "beat" the seed
-    else if (rand < 0.75) {
-        // Beat logic: 1 beats 3, 2 beats 1, 3 beats 2
-        if (seed === 1) return 2;
-        if (seed === 2) return 3;
-        if (seed === 3) return 1;
-    }
-
-    // 25% chance to return something other than seed or "beat"
-    else {
-        let options = [1, 2, 3].filter(num => num !== seed && num !== (seed % 3) + 1);
-        return options[Math.floor(Math.random() * options.length)];
-    }
-}
-
-
-function getComputerChoice(){
-    return Math.random()
-}
-
 function getHumanChoice(){
     let humanChoice;
     
@@ -106,43 +72,43 @@ function pseudoRNG(seed) {
 
         // 31% chance to return something other than seed or "beat"
         else {
-                let options = [1, 2, 3].filter(num => num !== seed && num !== (seed % 3) + 1);
-                return function pseudoRNG(seed) {
-                    if (seed === undefined){
-                        return console.log("WHAT A BITCH")
-                    }
-                    else if (![1, 2, 3].includes(seed)) {
-                        throw new Error("Invalid seed. Seed must be 1, 2, or 3.");
-                    }
+            let options = [1, 2, 3].filter(num => num !== seed && num !== (seed % 3) + 1);
+            return function pseudoRNG(seed) {
+                if (seed === undefined){
+                    return console.log("WHAT A BITCH")
+                }
+                else if (![1, 2, 3].includes(seed)) {
+                    throw new Error("Invalid seed. Seed must be 1, 2, or 3.");
+                }
 
-                    else {
+                else {
 
-                    // Generate a random number between 0 and 1
-                    const rand = Math.random();
+                // Generate a random number between 0 and 1
+                const rand = Math.random();
 
-                    // 33% chance to match the seed
-                    if (rand < 0.33) {
-                        return seed;
-                    }
+                // 33% chance to match the seed
+                if (rand < 0.33) {
+                    return seed;
+                }
 
-                    // 36% chance to "beat" the seed
-                    else if (rand < 0.69) {
-                        // Beat logic: 1 beats 3, 2 beats 1, 3 beats 2
-                        if (seed === 1) return 2;
-                        if (seed === 2) return 3;
-                        if (seed === 3) return 1;
-                    }
+                // 36% chance to "beat" the seed
+                else if (rand < 0.69) {
+                    // Beat logic: 1 beats 3, 2 beats 1, 3 beats 2
+                    if (seed === 1) return 2;
+                    if (seed === 2) return 3;
+                    if (seed === 3) return 1;
+                }
 
-                    // 31% chance to return something other than seed or "beat"
-                    else {
-                        let options = [1, 2, 3].filter(num => num !== seed && num !== (seed % 3) + 1);
-                        return options[Math.floor(Math.random()*options.lenght)];
-                    };
-                    }
+                // 31% chance to return something other than seed or "beat"
+                else {
+                    let options = [1, 2, 3].filter(num => num !== seed && num !== (seed % 3) + 1);
+                    return options[Math.floor(Math.random()*options.lenght)];
+                };
                 }
             }
         }
     }
+}
 
 console.log(pseudoRNG(choiceConverted))
 
