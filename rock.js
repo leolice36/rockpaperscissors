@@ -1,4 +1,10 @@
 
+
+// let computerChoiceFinal = getComputerChoice()
+
+let humanScore = 0
+let computerScore = 0
+
 function getComputerChoice(){
     function getHumanChoice(){
         let humanChoice;
@@ -81,31 +87,20 @@ function getComputerChoice(){
         let computerChoice = pseudoRNG(humanChoiceConverted)
         console.log({computerChoice})
         if (computerChoice === undefined) {
-            return "CANCELED";
-        }
-
-        if (computerChoice == 1){
+            return ["CANCELED", humanChoiceFinal];
+        } else if (computerChoice == 1){
             console.log("Computer: ROCK");
-            return "ROCK";
+            return ["ROCK", humanChoiceFinal];
         } else if (computerChoice == 2) {
             console.log("Computer: PAPER");
-            return "PAPER";
+            return ["PAPER", humanChoiceFinal];
         } else if (computerChoice == 3) {
             console.log("Computer: SCISSORS");
-            return "SCISSORS";
+            return ["SCISSORS", humanChoiceFinal];
         }
-
-        return computerChoice
     }
 }
-getComputerChoice()
-
-
-// runs both but getComputerChoice depends on humanChoiceFinal value
-// let computerChoiceFinal = getComputerChoice()
-
-let humanScore = 0
-let computerScore = 0
+console.log(getComputerChoice())
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
