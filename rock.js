@@ -86,18 +86,20 @@ function getComputerChoice(){
         console.log({humanChoiceConverted})
         let computerChoice = pseudoRNG(humanChoiceConverted)
         console.log({computerChoice})
+        let computerChoiceFinal;
         if (computerChoice === undefined) {
-            return ["CANCELED", humanChoiceFinal];
+            computerChoiceFinal = "CANCELED";
         } else if (computerChoice == 1){
             console.log("Computer: ROCK");
-            return ["ROCK", humanChoiceFinal];
+            computerChoiceFinal = "ROCK";
         } else if (computerChoice == 2) {
             console.log("Computer: PAPER");
-            return ["PAPER", humanChoiceFinal];
+            computerChoiceFinal = "PAPER";
         } else if (computerChoice == 3) {
             console.log("Computer: SCISSORS");
-            return ["SCISSORS", humanChoiceFinal];
+            computerChoiceFinal = "SCISSORS";
         }
+    return [computerChoiceFinal, humanChoiceFinal]
     }
 }
 console.log(getComputerChoice())
