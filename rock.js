@@ -1,7 +1,3 @@
-
-
-// let computerChoiceFinal = getComputerChoice()
-
 let humanScore = 0
 let computerScore = 0
 
@@ -19,13 +15,13 @@ function getComputerChoice(){
             humanChoice = humanChoice.trim().toUpperCase()
     
             if (humanChoice == "1" || humanChoice == "ROCK"){
-                console.log("ROCK BITCH");
+                console.log("ME: ROCK BITCH");
                 return "ROCK";
             } else if (humanChoice == "2" || humanChoice == "PAPER") {
-                console.log("PAPER BITCH");
+                console.log("ME: PAPER BITCH");
                 return "PAPER";
             } else if (humanChoice == "3" || humanChoice == "SCISSORS") {
-                console.log("SCISSORS BITCH");
+                console.log("ME: SCISSORS BITCH");
                 return "SCISSORS";
             } else {
                 console.log("Enter a valid value (1, 2, 3, ROCK, PAPER, or SCISSORS)");
@@ -83,9 +79,7 @@ function getComputerChoice(){
         console.log("WHAT A BITCH");
     else {
         let humanChoiceConverted = convertToSeed(humanChoiceFinal)
-        console.log({humanChoiceConverted})
         let computerChoice = pseudoRNG(humanChoiceConverted)
-        console.log({computerChoice})
         let computerChoiceFinal;
         if (computerChoice === undefined) {
             computerChoiceFinal = "CANCELED";
@@ -102,8 +96,6 @@ function getComputerChoice(){
     return [humanChoiceFinal, computerChoiceFinal]
     }
 }
-// console.log(getComputerChoice())
-
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
         console.log("AGAIN!")
@@ -121,35 +113,23 @@ function playRound(humanChoice, computerChoice){
         return computerScore++  
     }
 }
-
-let choiceArray = getComputerChoice()
-console.log(choiceArray)
-let x = playRound(...choiceArray)
-console.log(x)
-
-console.log({humanScore})
-console.log({computerScore})
-
-
 function playGame(){
     
-    while ((humanScore || computerScore) <= 5){
+    while (Math.max(humanScore, computerScore) < 5){
+        
         let choiceArray = getComputerChoice()
-        playRound(...choiceArray)
+        if (choiceArray.includes('CANCELED')) {
+            console.log("Exiting game.");
+            break
+        }
+            playRound(...choiceArray)
+            console.log({humanScore})
+            console.log({computerScore})            
+    }
+
+    if (humanScore > computerScore) {
+        console.log("Human wins with a score of", humanScore);
+    } else if (computerScore > humanScore) {
+        console.log("Computer wins with a score of", computerScore);
     }
 }
-
-// playGame()
-
-// let x = "ROCK"
-// let y = "PAPER"
-// let z = "SCISSORS"
-
-
-// playRound(x,z)
-// playRound(x,z)
-// playRound(x,z)
-// playRound(x,z)
-// playRound(x,y)
-// playRound(x,y)
-// playRound(x,y)
