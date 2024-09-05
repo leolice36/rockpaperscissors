@@ -99,10 +99,10 @@ function getComputerChoice(){
             console.log("Computer: SCISSORS");
             computerChoiceFinal = "SCISSORS";
         }
-    return [computerChoiceFinal, humanChoiceFinal]
+    return [humanChoiceFinal, computerChoiceFinal]
     }
 }
-console.log(getComputerChoice())
+// console.log(getComputerChoice())
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice === computerChoice){
@@ -121,10 +121,22 @@ function playRound(humanChoice, computerChoice){
         return computerScore++  
     }
 }
+
+let choiceArray = getComputerChoice()
+console.log(choiceArray)
+let x = playRound(...choiceArray)
+console.log(x)
+
+console.log({humanScore})
+console.log({computerScore})
+
+
 function playGame(){
     
-    while ((humanScore || computerScore) <= 5)
-        playRound(getHumanChoice(),getComputerChoice())
+    while ((humanScore || computerScore) <= 5){
+        let choiceArray = getComputerChoice()
+        playRound(...choiceArray)
+    }
 }
 
 // playGame()
@@ -141,5 +153,3 @@ function playGame(){
 // playRound(x,y)
 // playRound(x,y)
 // playRound(x,y)
-// console.log({humanScore})
-// console.log({computerScore})
