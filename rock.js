@@ -1,27 +1,29 @@
 let humanScore = 0
 let computerScore = 0
 
-const rockBtn = document.querySelector("#rock")
-rockBtn.addEventListener('click', () => playRound("ROCK"))
-const paperBtn = document.querySelector("#paper")
-paperBtn.addEventListener('click', () => playRound("PAPER"))
-const scissorsBtn = document.querySelector("#scissors")
-scissorsBtn.addEventListener('click', () => playRound("SCISSORS"))
+const rockBtn = document.querySelector("#rock");
+rockBtn.addEventListener('click', () => playRound("ROCK"));
+const paperBtn = document.querySelector("#paper");
+paperBtn.addEventListener('click', () => playRound("PAPER"));
+const scissorsBtn = document.querySelector("#scissors");
+scissorsBtn.addEventListener('click', () => playRound("SCISSORS"));
 
-const humanChoiceDisplay = document.querySelector('#humanChoiceDisplay')
+const humanChoiceDisplay = document.querySelector('#humanChoiceDisplay');;
+const computerChoiceDisplay = document.querySelector('#computerChoiceDisplay');
+const humanScoreDisplay = document.querySelector('#humanScoreDisplay');
+const computerScoreDisplay = document.querySelector('#computerScoreDisplay');
+const roundResult = document.querySelector('#roundResult');
+
 
 function getHumanChoice(buttonInput){
     if (buttonInput === null) {
         console.log("Prompt was canceled. Returning 'CANCELED'.")
     } else if (buttonInput == "ROCK"){
         console.log("ME: ROCK BITCH");
-        humanChoiceDisplay.textContent  = "ME: ROCK BITCH";
     } else if (buttonInput == "PAPER") {
         console.log("ME: PAPER BITCH");
-        humanChoiceDisplay.textContent  = "ME: PAPER BITCH";
     } else if (buttonInput == "SCISSORS") {
         console.log("ME: SCISSORS BITCH");
-        humanChoiceDisplay.textContent  = "ME: SCISSORS BITCH"
     }
 }
 function getComputerChoice(humanChoiceFinal){
@@ -104,7 +106,7 @@ function playRound(humanChoice){
     console.log({computerChoice});
 
     if (humanChoice === computerChoice){
-        console.log("AGAIN!");
+        roundResultDisplay = "AGAIN!";
         console.log({humanScore});
         console.log({computerScore});  
     }
@@ -113,22 +115,27 @@ function playRound(humanChoice){
         || (humanChoice === "SCISSORS" && computerChoice === "PAPER")
         || (humanChoice === "PAPER" && computerChoice === "ROCK")
         ){
-        console.log("HUMAN WIN!")
+        roundResultDisplay = "HUMAN WIN!";
         humanScore++;
         console.log({humanScore});
         console.log({computerScore});   
-        return
     }
     else{
-        console.log("HUMAN LOSE!")
+        roundResultDisplay = "HUMAN LOSE!";
         computerScore++
         console.log({humanScore});
-        console.log({computerScore});
-        return   
+        console.log({computerScore});   
     }
-    
+    displayResults(humanChoice,computerChoice,humanScore,computerScore,roundResultDisplay);
 }
 
+function displayResults(humanChoiceText,computerChoiceText,humanScoreText,computerScoreText,roundResultText){
+    humanChoiceDisplay.textContent  = `ME: ${humanChoiceText} BITCH`;
+    computerChoiceDisplay.textContent = `Computer: ${computerChoiceText}`;
+    humanScoreDisplay.textContent = `HUMAN: ${humanScoreText}`;
+    computerScoreDisplay.textContent = `COMPUTER: ${computerScoreText}`;
+    roundResult.textContent = `${roundResultText}`;
+}
 
 
 // disabled for now
