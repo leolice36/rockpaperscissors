@@ -8,19 +8,20 @@ paperBtn.addEventListener('click', () => playRound("PAPER"))
 const scissorsBtn = document.querySelector("#scissors")
 scissorsBtn.addEventListener('click', () => playRound("SCISSORS"))
 
+const humanChoiceDisplay = document.querySelector('#humanChoiceDisplay')
+
 function getHumanChoice(buttonInput){
     if (buttonInput === null) {
-        console.log("Prompt was canceled. Returning 'CANCELED'.");
-        return humanChoiceFinal = "CANCELED";
-    } else if (buttonInput == "1"){
+        console.log("Prompt was canceled. Returning 'CANCELED'.")
+    } else if (buttonInput == "ROCK"){
         console.log("ME: ROCK BITCH");
-        return humanChoiceFinal = "ROCK";
-    } else if (buttonInput == "2") {
+        humanChoiceDisplay.textContent  = "ME: ROCK BITCH";
+    } else if (buttonInput == "PAPER") {
         console.log("ME: PAPER BITCH");
-        return humanChoiceFinal = "PAPER";
-    } else if (buttonInput == "3") {
+        humanChoiceDisplay.textContent  = "ME: PAPER BITCH";
+    } else if (buttonInput == "SCISSORS") {
         console.log("ME: SCISSORS BITCH");
-        return humanChoiceFinal = "SCISSORS";
+        humanChoiceDisplay.textContent  = "ME: SCISSORS BITCH"
     }
 }
 function getComputerChoice(humanChoiceFinal){
