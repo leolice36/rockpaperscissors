@@ -135,15 +135,15 @@ function playRound(humanChoice, computerChoice){
 
 
 // disabled for now
-// function playGame(){
+function playGame(){
     
-//     while (Math.max(humanScore, computerScore) < 5){
-        
-//     }
+    while (Math.max(humanScore, computerScore) < 5){
+        playRound()
+    }
 
-//     if (humanScore > computerScore) {
-//         console.log("Human wins with a score of", humanScore);
-//     } else if (computerScore > humanScore) {
-//         console.log("Computer wins with a score of", computerScore);
-//     }
-// }
+    if (humanScore > computerScore) {
+        console.log("Human wins with a score of", humanScore);
+    } else if (computerScore > humanScore) {
+        console.log("Computer wins with a score of", computerScore);
+    }
+}
