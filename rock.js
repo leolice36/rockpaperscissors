@@ -1,29 +1,29 @@
 let humanScore = 0
 let computerScore = 0
 
-function getHumanChoice(){
-    let humanChoice = prompt("What bitch")
-    
-        if (humanChoice === null) {
-            console.log("Prompt was canceled. Returning 'CANCELED'.");
-            return "CANCELED";
-        }
-        humanChoice = humanChoice.trim().toUpperCase()
+const rockBtn = document.querySelector("#rock")
+rockBtn.addEventListener('click', () => playRound("ROCK"))
+const paperBtn = document.querySelector("#paper")
+paperBtn.addEventListener('click', () => playRound("PAPER"))
+const scissorsBtn = document.querySelector("#scissors")
+scissorsBtn.addEventListener('click', () => playRound("SCISSORS"))
 
-        if (humanChoice == "1" || humanChoice == "ROCK"){
-            console.log("ME: ROCK BITCH");
-            return "ROCK";
-        } else if (humanChoice == "2" || humanChoice == "PAPER") {
-            console.log("ME: PAPER BITCH");
-            return "PAPER";
-        } else if (humanChoice == "3" || humanChoice == "SCISSORS") {
-            console.log("ME: SCISSORS BITCH");
-            return "SCISSORS";
-        } else {
-            console.log("Enter a valid value (1, 2, 3, ROCK, PAPER, or SCISSORS)");
-        }
+function getHumanChoice(buttonInput){
+    if (buttonInput === null) {
+        console.log("Prompt was canceled. Returning 'CANCELED'.");
+        return humanChoiceFinal = "CANCELED";
+    } else if (buttonInput == "1"){
+        console.log("ME: ROCK BITCH");
+        return humanChoiceFinal = "ROCK";
+    } else if (buttonInput == "2") {
+        console.log("ME: PAPER BITCH");
+        return humanChoiceFinal = "PAPER";
+    } else if (buttonInput == "3") {
+        console.log("ME: SCISSORS BITCH");
+        return humanChoiceFinal = "SCISSORS";
+    }
 }
-function getComputerChoice(){
+function getComputerChoice(humanChoiceFinal){
     function convertToSeed(rawChoice){
         if (rawChoice === "ROCK"){
             return 1;
@@ -70,7 +70,6 @@ function getComputerChoice(){
             }
         }
     }
-    let humanChoiceFinal = getHumanChoice()
     if (humanChoiceFinal === undefined )
         console.log("WHAT A BITCH");
     else {
@@ -89,20 +88,19 @@ function getComputerChoice(){
             console.log("Computer: SCISSORS");
             computerChoiceFinal = "SCISSORS";
         }
-    return [humanChoiceFinal, computerChoiceFinal]
+    return computerChoiceFinal
     }
 }
-function playRound(humanChoice, computerChoice){
-    let choiceArray = getComputerChoice()
+function playRound(humanChoice){
+    getHumanChoice(humanChoice);
+    let computerChoice = getComputerChoice(humanChoice);
     
-    if (choiceArray.includes('CANCELED')) {
+    if (humanChoice ==='CANCELED') {
         console.log("Exiting game.");
         return
     }
-    [humanChoice, computerChoice] = choiceArray;
-
-    console.log({humanChoice})
-    console.log({computerChoice})
+    console.log({humanChoice});
+    console.log({computerChoice});
 
     if (humanChoice === computerChoice){
         console.log("AGAIN!");
@@ -131,6 +129,7 @@ function playRound(humanChoice, computerChoice){
 }
 
 
+
 // disabled for now
 // function playGame(){
     
@@ -143,4 +142,4 @@ function playRound(humanChoice, computerChoice){
 //     } else if (computerScore > humanScore) {
 //         console.log("Computer wins with a score of", computerScore);
 //     }
-// }
+// }s
