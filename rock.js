@@ -1,33 +1,29 @@
 let humanScore = 0
 let computerScore = 0
 
-function getComputerChoice(){
-    function getHumanChoice(){
-        let humanChoice;
-        
-        while (true) {
-            humanChoice = prompt("What bitch")
-        
-            if (humanChoice === null) {
-                console.log("Prompt was canceled. Returning 'CANCELED'.");
-                return "CANCELED";
-            }
-            humanChoice = humanChoice.trim().toUpperCase()
+function getHumanChoice(){
+    let humanChoice = prompt("What bitch")
     
-            if (humanChoice == "1" || humanChoice == "ROCK"){
-                console.log("ME: ROCK BITCH");
-                return "ROCK";
-            } else if (humanChoice == "2" || humanChoice == "PAPER") {
-                console.log("ME: PAPER BITCH");
-                return "PAPER";
-            } else if (humanChoice == "3" || humanChoice == "SCISSORS") {
-                console.log("ME: SCISSORS BITCH");
-                return "SCISSORS";
-            } else {
-                console.log("Enter a valid value (1, 2, 3, ROCK, PAPER, or SCISSORS)");
-            }
+        if (humanChoice === null) {
+            console.log("Prompt was canceled. Returning 'CANCELED'.");
+            return "CANCELED";
         }
-    }
+        humanChoice = humanChoice.trim().toUpperCase()
+
+        if (humanChoice == "1" || humanChoice == "ROCK"){
+            console.log("ME: ROCK BITCH");
+            return "ROCK";
+        } else if (humanChoice == "2" || humanChoice == "PAPER") {
+            console.log("ME: PAPER BITCH");
+            return "PAPER";
+        } else if (humanChoice == "3" || humanChoice == "SCISSORS") {
+            console.log("ME: SCISSORS BITCH");
+            return "SCISSORS";
+        } else {
+            console.log("Enter a valid value (1, 2, 3, ROCK, PAPER, or SCISSORS)");
+        }
+}
+function getComputerChoice(){
     function convertToSeed(rawChoice){
         if (rawChoice === "ROCK"){
             return 1;
@@ -109,8 +105,9 @@ function playRound(humanChoice, computerChoice){
     console.log({computerChoice})
 
     if (humanChoice === computerChoice){
-        console.log("AGAIN!")
-        
+        console.log("AGAIN!");
+        console.log({humanScore});
+        console.log({computerScore});  
     }
     else if(
         (humanChoice === "ROCK" && computerChoice === "SCISSORS")
@@ -135,15 +132,15 @@ function playRound(humanChoice, computerChoice){
 
 
 // disabled for now
-function playGame(){
+// function playGame(){
     
-    while (Math.max(humanScore, computerScore) < 5){
-        playRound()
-    }
+//     while (Math.max(humanScore, computerScore) < 5){
+//         playRound()
+//     }
 
-    if (humanScore > computerScore) {
-        console.log("Human wins with a score of", humanScore);
-    } else if (computerScore > humanScore) {
-        console.log("Computer wins with a score of", computerScore);
-    }
-}
+//     if (humanScore > computerScore) {
+//         console.log("Human wins with a score of", humanScore);
+//     } else if (computerScore > humanScore) {
+//         console.log("Computer wins with a score of", computerScore);
+//     }
+// }
