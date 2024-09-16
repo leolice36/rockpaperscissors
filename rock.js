@@ -97,8 +97,20 @@ function getComputerChoice(){
     }
 }
 function playRound(humanChoice, computerChoice){
+    let choiceArray = getComputerChoice()
+    
+    if (choiceArray.includes('CANCELED')) {
+        console.log("Exiting game.");
+        return
+    }
+    [humanChoice, computerChoice] = choiceArray;
+
+    console.log({humanChoice})
+    console.log({computerChoice})
+
     if (humanChoice === computerChoice){
         console.log("AGAIN!")
+        
     }
     else if(
         (humanChoice === "ROCK" && computerChoice === "SCISSORS")
@@ -106,30 +118,32 @@ function playRound(humanChoice, computerChoice){
         || (humanChoice === "PAPER" && computerChoice === "ROCK")
         ){
         console.log("HUMAN WIN!")
-        return humanScore++   
+        humanScore++;
+        console.log({humanScore});
+        console.log({computerScore});   
+        return
     }
     else{
         console.log("HUMAN LOSE!")
-        return computerScore++  
+        computerScore++
+        console.log({humanScore});
+        console.log({computerScore});
+        return   
     }
-}
-function playGame(){
     
-    while (Math.max(humanScore, computerScore) < 5){
-        
-        let choiceArray = getComputerChoice()
-        if (choiceArray.includes('CANCELED')) {
-            console.log("Exiting game.");
-            break
-        }
-            playRound(...choiceArray)
-            console.log({humanScore})
-            console.log({computerScore})            
-    }
-
-    if (humanScore > computerScore) {
-        console.log("Human wins with a score of", humanScore);
-    } else if (computerScore > humanScore) {
-        console.log("Computer wins with a score of", computerScore);
-    }
 }
+
+
+// disabled for now
+// function playGame(){
+    
+//     while (Math.max(humanScore, computerScore) < 5){
+        
+//     }
+
+//     if (humanScore > computerScore) {
+//         console.log("Human wins with a score of", humanScore);
+//     } else if (computerScore > humanScore) {
+//         console.log("Computer wins with a score of", computerScore);
+//     }
+// }
