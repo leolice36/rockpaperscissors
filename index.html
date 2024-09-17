@@ -2,19 +2,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-    <p id="humanChoiceDisplay">human choice</p>
-    <p id="computerChoiceDisplay">computer choice</p>
-    <p id="humanScoreDisplay">human score</p>
-    <p id="computerScoreDisplay">computer score</p>
-    <p id="roundResult">ROUND RESULT</p>
+    <section class="button-section">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+    </section>
+    
+    <section class="right-side">
+        <section class="labels">
+            <div id="human-label">HUMAN</div>
+            <div id="computer-label">COMPUTER</div>
+        </section>
+
+        <section class="score-display">
+            <div id="humanScoreDisplay">0</div>
+            <div id="computerScoreDisplay">0</div>
+        </section>
+
+        <section class="choice-display-section">
+            <div id="humanChoiceDisplay"></div>
+            <div id="vsMiddle">VS</div>
+            <div id="computerChoiceDisplay"></div>
+        </section>
+
+        <div id="roundResult">ROUND RESULT</div>
+    </section>
+    
+
     <script src="rock.js">
     </script>
 </body>

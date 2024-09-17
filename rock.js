@@ -2,10 +2,10 @@ let humanScore = 0
 let computerScore = 0
 
 const rockBtn = document.querySelector("#rock");
-rockBtn.addEventListener('click', () => playRound("ROCK"));
 const paperBtn = document.querySelector("#paper");
-paperBtn.addEventListener('click', () => playRound("PAPER"));
 const scissorsBtn = document.querySelector("#scissors");
+rockBtn.addEventListener('click', () => playRound("ROCK"));
+paperBtn.addEventListener('click', () => playRound("PAPER"));
 scissorsBtn.addEventListener('click', () => playRound("SCISSORS"));
 
 const humanChoiceDisplay = document.querySelector('#humanChoiceDisplay');;
@@ -19,11 +19,11 @@ function getHumanChoice(buttonInput){
     if (buttonInput === null) {
         console.log("Prompt was canceled. Returning 'CANCELED'.")
     } else if (buttonInput == "ROCK"){
-        console.log("ME: ROCK BITCH");
+        console.log("ROCK");
     } else if (buttonInput == "PAPER") {
-        console.log("ME: PAPER BITCH");
+        console.log("PAPER");
     } else if (buttonInput == "SCISSORS") {
-        console.log("ME: SCISSORS BITCH");
+        console.log("SCISSORS");
     }
 }
 function getComputerChoice(humanChoiceFinal){
@@ -115,39 +115,35 @@ function playRound(humanChoice){
         || (humanChoice === "SCISSORS" && computerChoice === "PAPER")
         || (humanChoice === "PAPER" && computerChoice === "ROCK")
         ){
-        roundResultDisplay = "HUMAN WIN!";
+        roundResultDisplay = "HUMAN SCORE!";
         humanScore++;
         console.log({humanScore});
         console.log({computerScore});   
     }
     else{
-        roundResultDisplay = "HUMAN LOSE!";
+        roundResultDisplay = "COMPUTER SCORE!";
         computerScore++
         console.log({humanScore});
         console.log({computerScore});   
     }
     displayResults(humanChoice,computerChoice,humanScore,computerScore,roundResultDisplay);
 }
-
 function displayResults(humanChoiceText,computerChoiceText,humanScoreText,computerScoreText,roundResultText){
-    humanChoiceDisplay.textContent  = `ME: ${humanChoiceText} BITCH`;
-    computerChoiceDisplay.textContent = `Computer: ${computerChoiceText}`;
-    humanScoreDisplay.textContent = `HUMAN: ${humanScoreText}`;
-    computerScoreDisplay.textContent = `COMPUTER: ${computerScoreText}`;
+    humanChoiceDisplay.textContent  = `${humanChoiceText}`;
+    computerChoiceDisplay.textContent = `${computerChoiceText}`;
+    humanScoreDisplay.textContent = `${humanScoreText}`;
+    computerScoreDisplay.textContent = `${computerScoreText}`;
     roundResult.textContent = `${roundResultText}`;
 }
+function playGame(){
+    while (Math.max(humanScore, computerScore) < 5){
+    }
 
+    if (humanScore > computerScore) {
+        console.log("Human wins with a score of", humanScore);
+    } else if (computerScore > humanScore) {
+        console.log("Computer wins with a score of", computerScore);
+    }
+}
 
-// disabled for now
-// function playGame(){
-    
-//     while (Math.max(humanScore, computerScore) < 5){
-//         playRound()
-//     }
-
-//     if (humanScore > computerScore) {
-//         console.log("Human wins with a score of", humanScore);
-//     } else if (computerScore > humanScore) {
-//         console.log("Computer wins with a score of", computerScore);
-//     }
-// }s
+// playGame();
