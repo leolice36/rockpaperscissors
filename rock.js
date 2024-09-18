@@ -18,12 +18,6 @@ const roundResult = document.querySelector('#roundResult');
 function getHumanChoice(buttonInput){
     if (buttonInput === null) {
         console.log("Prompt was canceled. Returning 'CANCELED'.")
-    } else if (buttonInput == "ROCK"){
-        console.log("ROCK");
-    } else if (buttonInput == "PAPER") {
-        console.log("PAPER");
-    } else if (buttonInput == "SCISSORS") {
-        console.log("SCISSORS");
     }
 }
 function getComputerChoice(humanChoiceFinal){
@@ -43,7 +37,7 @@ function getComputerChoice(humanChoiceFinal){
     }
     function pseudoRNG(seed) {
         if (seed === undefined){
-            return console.log("WHAT A BITCH")
+            return 
         }
         else if (![1, 2, 3].includes(seed)) {
             throw new Error("Invalid seed. Seed must be 1, 2, or 3.");
@@ -82,13 +76,10 @@ function getComputerChoice(humanChoiceFinal){
         if (computerChoice === undefined) {
             computerChoiceFinal = "CANCELED";
         } else if (computerChoice == 1){
-            console.log("Computer: ROCK");
             computerChoiceFinal = "ROCK";
         } else if (computerChoice == 2) {
-            console.log("Computer: PAPER");
             computerChoiceFinal = "PAPER";
         } else if (computerChoice == 3) {
-            console.log("Computer: SCISSORS");
             computerChoiceFinal = "SCISSORS";
         }
     return computerChoiceFinal
@@ -102,13 +93,9 @@ function playRound(humanChoice){
         console.log("Exiting game.");
         return
     }
-    console.log({humanChoice});
-    console.log({computerChoice});
 
     if (humanChoice === computerChoice){
-        roundResultDisplay = "AGAIN!";
-        console.log({humanScore});
-        console.log({computerScore});  
+        roundResultDisplay = "AGAIN!";  
     }
     else if(
         (humanChoice === "ROCK" && computerChoice === "SCISSORS")
@@ -116,15 +103,11 @@ function playRound(humanChoice){
         || (humanChoice === "PAPER" && computerChoice === "ROCK")
         ){
         roundResultDisplay = "HUMAN SCORE!";
-        humanScore++;
-        console.log({humanScore});
-        console.log({computerScore});   
+        humanScore++; 
     }
     else{
         roundResultDisplay = "COMPUTER SCORE!";
-        computerScore++
-        console.log({humanScore});
-        console.log({computerScore});   
+        computerScore++  
     }
     displayResults(humanChoice,computerChoice,humanScore,computerScore,roundResultDisplay);
     playGame()
@@ -143,12 +126,10 @@ function playGame(){
         roundResult.textContent = `HUMAN WIN!`;
         computerScore = 0;
         humanScore = 0;
-        console.log("Human wins with a score of", humanScore);
     } else if (computerScore > humanScore) {
         roundResult.textContent = `COMPUTER WIN!`;
         computerScore = 0;
         humanScore = 0;
-        console.log("Computer wins with a score of", computerScore);
     }
 }
 
