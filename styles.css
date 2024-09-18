@@ -12,6 +12,8 @@ body {
     margin: 0;
     display: flex;
     max-width: 1500px;
+    justify-content: center;
+    
 }
 
 dialog {
@@ -19,7 +21,20 @@ dialog {
     border-radius: 5px;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    max-width: 950px;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-color: #FFF4EA;
+    color: #3C3D37;
 }
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -28,7 +43,7 @@ dialog::backdrop {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    justify-content: space-between;
+    justify-content: center;
     min-width: 1000px;
     max-width: 1000px;
 }
@@ -36,9 +51,8 @@ dialog::backdrop {
 
 .button-section{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    max-width: 300px;
+    padding: 20px;
 }
 
 .choice-button{
@@ -46,15 +60,16 @@ dialog::backdrop {
     align-items: center;
     flex-grow: 1;
     flex-basis: 33.33%;
-    min-width: 180px;
-    padding: 100px;
+    min-width: 150px;
+    padding: 70px;
     margin: 2px;
     border-radius: 10px;
     border: 0;
-    background-color: #76a745;
-    color: #f9faf8;
+    background-color: #C96868;
+    color: #FFF4EA;
     font-size: 50px;
     justify-content: center;
+    font-weight: bold;
 }
 
 .choice-display-section{
@@ -65,6 +80,7 @@ dialog::backdrop {
 .labels{
     display: flex;
     flex-basis: 13%;
+    margin-top: 10px;
 }
 
 .labels > *{
@@ -77,8 +93,8 @@ dialog::backdrop {
     margin: 2px;
     border-radius: 10px;
     border: 0;
-    background-color: #1e1a09;
-    color: #f9faf8;
+    background-color: #C96868;
+    color: #FFF4EA;
     font-size: 50px;
     font-weight: 900;
 }
@@ -97,8 +113,8 @@ dialog::backdrop {
     margin: 2px;
     border-radius: 10px;
     border: 0;
-    background-color: #d9b939;
-    color: #f9faf8;
+    background-color: #FADFA1;
+    color: #3C3D37;
     font-size: 50px;
 }
 #humanChoiceDisplay, #computerChoiceDisplay, #vsMiddle{
@@ -110,8 +126,8 @@ dialog::backdrop {
     margin: 2px;
     border-radius: 10px;
     border: 0;
-    background-color: #30036b;
-    color: #f9faf8;
+    background-color: #FFF4EA;
+    color: #3C3D37;
     font-size: 50px;
 }
 
@@ -128,9 +144,22 @@ dialog::backdrop {
     align-items: center;
     flex-basis: 33.33%;
     margin: 2px;
+    margin-bottom: 10px;
     border-radius: 10px;
     border: 0;
-    background-color: #626361;
-    color: #f9faf8;
+    background-color: #7EACB5;
+    color: #FFF4EA;
     font-size: 50px;
+    font-weight: bold;
+}
+
+.dialog-button {
+    padding: 20px 40px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 10px;
+    border: 0;
+    background-color: #3C3D37;
+    color: #FFF4EA;
 }

@@ -8,24 +8,29 @@
     <title>Document</title>
 </head>
 <body>
-    <dialog id="firstDialog">
-        <h2>First Dialog</h2>
-        <p>This dialog opens by default.</p>
-        <button id="closeFirstDialog">Close</button>
+    <dialog id="playDialog">
+        <h2>WELCOME TO RIGGED PAPER SCISSORS!</h2>
+        <p>Wanna play?</p>
+        <button id="closeFirstDialog" class="dialog-button">Let's GO!</button>
     </dialog>
 
-    <!-- <dialog id="secondDialog"></dialog>
-        <h2>Second Dialog</h2>
-        <p>You've clicked 5 times!</p>
-        <button id="resetButton">Close and Reset</button>
-        <button id="disableButton">Close and Disable</button>
-    </dialog> -->
+    <dialog id="choiceDialog">
+        <div class="dialog-content">
+            <h2>CHOOSE YOUR PICK</h2>
+            <section class="button-section">
+                <button class="choice-button" id="rock">rock</button>
+                <button class="choice-button" id="paper">paper</button>
+                <button class="choice-button" id="scissors">scissors</button>
+            </section>
+        </div>
+    </dialog>
 
-    <section class="button-section">
-        <button class="choice-button" id="rock">rock</button>
-        <button class="choice-button" id="paper">paper</button>
-        <button class="choice-button" id="scissors">scissors</button>
-    </section>
+    <dialog id="playAgainDialog">
+        <h2>Play again?</h2>
+        <button id="playAgainBtn" class="dialog-button">Yep!</button>
+        <button id="cancelBtn" class="dialog-button">Cancel</button>
+    </dialog>
+
     
     <section class="right-side">
         <section class="labels">
@@ -44,7 +49,7 @@
             <div id="computerChoiceDisplay"></div>
         </section>
 
-        <div id="roundResult">ROUND RESULT</div>
+        <div id="roundResult"></div>
     </section>
     
 

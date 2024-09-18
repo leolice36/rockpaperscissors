@@ -4,15 +4,25 @@ let computerScore = 0
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
-rockBtn.addEventListener('click', () => playRound("ROCK"));
-paperBtn.addEventListener('click', () => playRound("PAPER"));
-scissorsBtn.addEventListener('click', () => playRound("SCISSORS"));
+rockBtn.addEventListener('click', () => {
+    playRound("ROCK");
+    choiceDialog.close();
+});
+paperBtn.addEventListener('click', () => {
+    playRound("PAPER")
+    choiceDialog.close();
+});
+scissorsBtn.addEventListener('click', () => {
+    playRound("SCISSORS")
+    choiceDialog.close();
+});
 
 const humanChoiceDisplay = document.querySelector('#humanChoiceDisplay');;
 const computerChoiceDisplay = document.querySelector('#computerChoiceDisplay');
 const humanScoreDisplay = document.querySelector('#humanScoreDisplay');
 const computerScoreDisplay = document.querySelector('#computerScoreDisplay');
 const roundResult = document.querySelector('#roundResult');
+
 
 
 function getHumanChoice(buttonInput){
@@ -124,27 +134,67 @@ function playGame(){
         return
     } else if (humanScore > computerScore) {
         roundResult.textContent = `HUMAN WIN!`;
-        computerScore = 0;
-        humanScore = 0;
+        playAgainDialog.showModal();
     } else if (computerScore > humanScore) {
         roundResult.textContent = `COMPUTER WIN!`;
-        computerScore = 0;
-        humanScore = 0;
+        playAgainDialog.showModal();
     }
+}
+function resetGame(){
+    computerScore = 0;
+    humanScore = 0;
+    roundResult.textContent = ``;
+    humanChoiceDisplay.textContent  = ``;
+    computerChoiceDisplay.textContent = ``;
+    humanScoreDisplay.textContent = `${humanScore}`;
+    computerScoreDisplay.textContent = `${computerScore}`;
 }
 
 
-
 // Dialog feature
-const firstDialog = document.getElementById('firstDialog');
+const playDialog = document.getElementById('playDialog');
 const closeFirstDialogBtn = document.getElementById('closeFirstDialog');
+const choiceDialog = document.getElementById('choiceDialog');
+const rightSide = document.querySelector('.right-side');
+const dialog = document.querySelector('dialog:not(#playDialog)');
+const playAgainDialog = document.querySelector('#playAgainDialog')
+const playAgainBtn = document.querySelector('#playAgainBtn')
+const cancelBtn = document.querySelector('#cancelBtn')
 
  // Open the first dialog by default
  document.addEventListener('DOMContentLoaded', () => {
-    firstDialog.showModal();
+    playDialog.showModal();
     // updateOpenSecondDialogButton();
 });
 
 closeFirstDialogBtn.addEventListener('click', () => {
-    firstDialog.close();
+    playDialog.close();
+    choiceDialog.showModal();
 });
+
+rightSide.addEventListener('click', () => {
+    choiceDialog.showModal();
+    roundResult.textContent = ``;
+});
+
+dialog.addEventListener("click", e => {  
+	const dialogDimensions = dialog.getBoundingClientRect()  
+	if (
+		e.clientX < dialogDimensions.left ||
+		e.clientX > dialogDimensions.right ||
+		e.clientY < dialogDimensions.top ||
+		e.clientY > dialogDimensions.bottom  
+		) {    
+		dialog.close()  
+		}
+})
+
+playAgainBtn.addEventListener('click', () => {
+    resetGame();
+    playAgainDialog.close();
+    choiceDialog.showModal();
+})
+
+cancelBtn.addEventListener('click', () => {
+    playAgainDialog.close();
+})
