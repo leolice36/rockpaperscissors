@@ -127,6 +127,7 @@ function playRound(humanChoice){
         console.log({computerScore});   
     }
     displayResults(humanChoice,computerChoice,humanScore,computerScore,roundResultDisplay);
+    playGame()
 }
 function displayResults(humanChoiceText,computerChoiceText,humanScoreText,computerScoreText,roundResultText){
     humanChoiceDisplay.textContent  = `${humanChoiceText}`;
@@ -136,14 +137,33 @@ function displayResults(humanChoiceText,computerChoiceText,humanScoreText,comput
     roundResult.textContent = `${roundResultText}`;
 }
 function playGame(){
-    while (Math.max(humanScore, computerScore) < 5){
-    }
-
-    if (humanScore > computerScore) {
+    if (Math.max(humanScore, computerScore) < 5){
+        return
+    } else if (humanScore > computerScore) {
+        roundResult.textContent = `HUMAN WIN!`;
+        computerScore = 0;
+        humanScore = 0;
         console.log("Human wins with a score of", humanScore);
     } else if (computerScore > humanScore) {
+        roundResult.textContent = `COMPUTER WIN!`;
+        computerScore = 0;
+        humanScore = 0;
         console.log("Computer wins with a score of", computerScore);
     }
 }
 
-// playGame();
+
+
+// Dialog feature
+const firstDialog = document.getElementById('firstDialog');
+const closeFirstDialogBtn = document.getElementById('closeFirstDialog');
+
+ // Open the first dialog by default
+ document.addEventListener('DOMContentLoaded', () => {
+    firstDialog.showModal();
+    // updateOpenSecondDialogButton();
+});
+
+closeFirstDialogBtn.addEventListener('click', () => {
+    firstDialog.close();
+});
