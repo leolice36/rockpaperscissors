@@ -172,10 +172,11 @@ closeFirstDialogBtn.addEventListener('click', () => {
     choiceDialog.showModal();
 });
 
-rightSide.addEventListener('click', () => {
+function choiceDialogReset(){
     choiceDialog.showModal();
     roundResult.textContent = ``;
-});
+}
+rightSide.addEventListener('click', choiceDialogReset);
 
 dialog.addEventListener("click", e => {  
 	const dialogDimensions = dialog.getBoundingClientRect()  
@@ -197,4 +198,5 @@ playAgainBtn.addEventListener('click', () => {
 
 cancelBtn.addEventListener('click', () => {
     playAgainDialog.close();
+    rightSide.removeEventListener('click', choiceDialogReset);
 })
